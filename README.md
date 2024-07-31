@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Here's the modified version as a Bitte AI Plugin for a CoinGecko price assistant:
 
-## Getting Started
+# CoinGecko Price Assistant Plugin
 
-First, run the development server:
+![CoinGecko Logo](https://static.coingecko.com/s/coingecko-logo-8903d34ce19ca4be1c81f0db30e924154750d208683fad7ae6f2ce06c76d0a56.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# CoinGecko Price Assistant API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This API provides an interface for retrieving the latest price data and chart information on cryptocurrency tokens using CoinGecko's data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Base URL
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+https://api.coingecko.com/api/v3
 
-## Learn More
+## Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+1. Get Token Price
+   GET /simple/price?ids={id}&vs_currencies={currency}
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Get Token Chart Data
+   GET /coins/{id}/market_chart?vs_currency={currency}&days={days}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Get Token Metadata
+   GET /coins/{id}
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Make LLM requests to the endpoints above. Refer to the full API documentation for detailed parameter and response information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Development
+
+1. Set `COINGECKO_API_KEY=your_api_key` environment variable
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
+
+navigate to `http://localhost:3000/docs` to view the API documentation.

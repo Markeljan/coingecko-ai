@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CoinGecko Price Assistant API",
+    "description": "API for retrieving the latest price data on cryptocurrency tokens using CoinGecko's data.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://coingecko-ai.vercel.app"
+    }
+  ],
+  "x-mb": {
+    "account-id": "markeljan.near",
+    "assistant": {
+      "name": "CoinGecko Price Assistant",
+      "description": "Assistant for retrieving the latest cryptocurrency price data using CoinGecko's API.",
+      "instructions": "You are an assistant that helps users get the latest cryptocurrency price information. You can retrieve current token prices in various currencies. Always provide the most up-to-date price information available from CoinGecko.",
+      "tools": [
+        {
+          "type": "submit-query"
+        }
+      ]
+    }
+  },
+  "paths": {
+    "/simple/price": {
+      "get": {
+        "summary": "Get the price of a token",
+        "description": "Fetch the current price of a specified token using the CoinGecko API.",
+        "operationId": "getTokenPrice",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ids",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The token identifier(s) for which the price is being requested. Use commas to separate multiple ids."
+          },
+          {
+            "in": "query",
+            "name": "vs_currencies",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The target currency or currencies of market data. Use commas to separate multiple vs_currencies."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved token price",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Invalid parameters."
+          },
+          "404": {
+            "description": "Token not found or price unavailable."
+          },
+          "429": {
+            "description": "Too many requests - API call limit reached."
+          },
+          "500": {
+            "description": "Internal server error or issue with CoinGecko services."
+          }
+        }
+      }
+    }
+  }
+}
