@@ -1,25 +1,32 @@
 import Fuse, { type IFuseOptions } from "fuse.js";
 
-import { TOKEN_MAP, type Token } from "@/lib/token-list";
+import tokenList from "@/lib/tokenList.json";
 
-const options: IFuseOptions<Token> = {
-  includeScore: true,
-  keys: [
-    { name: "name", weight: 0.5 },
-    { name: "symbol", weight: 0.3 },
-    { name: "id", weight: 0.2 },
-  ],
-  isCaseSensitive: false,
-  ignoreLocation: false,
-  distance: 10,
-  threshold: 0.1,
+type Token = {
+  id: string;
+  symbol: string;
+  name: string;
+  platforms: {
+    [key: string]: string;
+  };
 };
 
-const tokens = Object.values(TOKEN_MAP);
-const fuse = new Fuse(tokens, options);
+const options: IFuseOptions<Token> = {
+  keys: [
+    { name: "name", weight: 0.5 },
+    { name: "id", weight: 0.4 },
+    { name: "symbol", weight: 0.1 },
+  ],
+  includeScore: true,
+  isCaseSensitive: false,
+  ignoreLocation: false,
+  threshold: 0.3,
+  minMatchCharLength: 3,
+  shouldSort: true,
+};
+
+const fuse = new Fuse(tokenList, options);
 
 export const searchToken = (query: string): Token[] => {
-  const result = fuse.search(query);
-
-  return result.map((res) => res.item);
+  return fuse.search(query).map((res) => res.item);
 };
