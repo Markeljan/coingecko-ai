@@ -23,11 +23,16 @@ export async function GET(req: NextRequest) {
 
   const data = await response.json();
 
-  return NextResponse.json(data, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
-  });
+  return NextResponse.json(data);
 }
+
+// headers: [
+//   {
+//     key: "Access-Control-Allow-Methods",
+//     value: "GET,DELETE,PATCH,POST,PUT",
+//   },
+//   {
+//     key: "Access-Control-Allow-Headers",
+//     value:
+//       "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+//   },
