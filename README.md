@@ -30,7 +30,7 @@ Make LLM requests to the endpoints above. Refer to the full API documentation fo
 ## Development
 
 1. Set `COINGECKO_API_KEY=your_api_key` environment variable
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
+2. Install dependencies: `bun install`
+3. Run the development server: `bun run dev`
 
-navigate to `http://localhost:3000/docs` to view the API documentation.
+navigate to `http://localhost:3000` to view the API documentation.
