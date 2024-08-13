@@ -4,7 +4,7 @@
 
 ## Description
 
-CoinGecko-AI: Your intelligent companion for real-time cryptocurrency insights and price tracking powered by advanced AI.
+CoinGecko-AI: Your intelligent companion for real-time cryptocurrency insights and price tracking provided Coingecko API's.
 
 CoinGecko-AI is a cutting-edge project that combines the power of artificial intelligence with real-time cryptocurrency data from CoinGecko. This innovative tool provides users with intelligent insights on crypto market data. CoinGecko-AI offers a unique and intuitive way to navigate the complex world of digital assets, making it an invaluable resource for both novice and experienced crypto enthusiasts.
 
